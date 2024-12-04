@@ -1,0 +1,59 @@
+/* Gradient Background */
+body.gradient-custom {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Centering the Content */
+.d-flex {
+    height: 100vh;
+}
+
+/* Heading Styles */
+h1.display-1 {
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Paragraph Styles */
+p.lead {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #ff7e5f;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #feb47b;
+}
+
+/* Link Styles */
+p.mt-3 a {
+    color: #ffd700;
+    text-decoration: underline;
+}
+
+p.mt-3 a:hover {
+    color: #fff;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    h1.display-1 {
+        font-size: 3rem;
+    }
+    p.lead {
+        font-size: 1.2rem;
+    }
+}

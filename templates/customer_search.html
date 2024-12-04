@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block remtitle %}
+Customer-Dashboard
+{% endblock %}
+
+{% block cont %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+crossorigin="anonymous">
+
+{% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/customer_dashboard">Customer {{customer_name}}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav">
+                <a href="/customer_dashboard" class="nav-link active" aria-current="page">Home</a>
+                <a class="nav-link" href="/customer_dashboard/search">Search</a>
+                
+                
+                <a class="nav-link" href="/login">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container mt-3">
+    <form action="/customer_dashboard/search" method="get">
+        <div class="form-row">
+            <div class="col-auto">
+                <select name="search_type"  class="form-control">
+                    <option value="pin_code">Pin Code</option>
+                    <option value="service_name">Service Name</option>
+                    <option value="address">Address</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control" name="search_query" placeholder="Enter query" >
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Search</button>
+                
+            </div>
+        </div>
+    </form>
+    <a href="/customer_dashboard/search"><button class="btn btn-info">Reset</button></a>
+
+</div>
+<hr>
+{% if services %}
+<div class="container">
+    <h2>All Services</h2>
+    <table class="table">
+        <thead>
+        
+            <tr>
+                <th scope="col">Service Name</th>
+                <th scope="col">Service Description</th>
+                <th scope="col">Base Price</th>
+                <th scope="col">Time required</th>
+                <th scope="col">Proffesional Name</th>
+                <th scope="col">Proffesional Rating</th>
+                <th scope="col">View profile</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for service in services%}
+            <tr>
+                <td>{{service.service_name}}</td>
+                <td>{{service.service_description}}</td>
+                <td>{{service.base_price}}</td>
+                <td>{{service.time_required}}</td>
+                <td>
+                    {% for worker in service.workers%}
+                        {{worker.user_name}} <br>
+                    {%endfor%}
+                </td>
+                <td>
+                    {% for worker in service.workers%}
+                        {{worker.mean_rating}} <br>
+                    {%endfor%}
+                </td>
+                <td>
+                    {% for worker in service.workers%}
+                        <a href="/customer_dashboard/worker_profile/{{worker.id}}">View Profile</a> <br>
+                    {%endfor%}
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+{%else%}
+<div class="container">
+    <h2>No Services found</h2>
+
+</div>
+{%endif%}
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+        crossorigin="anonymous"></script>
+{%endblock%}

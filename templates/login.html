@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block remtitle %}
+Login
+{% endblock %}
+{% block cont %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+<link rel="stylesheet" href="/static/css/style2.css">
+
+{% endblock %}
+{% block content %}
+
+<section class="login py-0 bg-light">
+    <div class="container-fluid">
+      <div class="row g-0">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+          <img src="/static/img/Homelogo.png" class="img" alt="homeharmony">
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-12 col-12 text-center py-5 ">
+          <h1 class="animate__animated animate__heartBeat animate_infinite">Log in !</h1>
+        
+          <form action="/login" method="post">
+            <div class="form-row py-3 pt-5">
+              <div class="offset-1 col-lg-10">
+                <input type="text" class="username" name="username" placeholder="Username">
+              </div>
+            </div>
+            <div class="form-row py-3 pt-5">
+              <div class="offset-1 col-lg-10">
+                <input type="password" name="password" class="password" placeholder="password">
+              </div>
+            </div>
+            <div class="form-row py-3 py-5">
+              <div class="offset-1 col-lg-10">
+                <button class="btn1">Login</button>
+              </div>
+              <div></div>
+              <div class="offset-1 col-lg-10">
+                <button type="reset" class="btn1">Reset</button>
+              </div>
+            </div>
+          </form>
+          <p>Don't have account?</p>
+          <span><a href="/worker_register">Register as Service proffesional</a></span><br>
+          <span><a href="/customer_register">Register as customer</a></span>
+        </div>
+      </div>
+    </div>
+</section>
+        
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block remtitle %}
+Customer-Dashboard-proffesional-profile
+{% endblock %}
+
+{% block cont %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+crossorigin="anonymous">
+
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/customer_dashboard">Customer {{customer_name}}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav">
+                <a href="/customer_dashboard" class="nav-link active" aria-current="page">Home</a>
+                <li class="nav-item"><a class="nav-link" href="/customer_dashboard/search">Search</a></li>
+                
+                <a class="nav-link" href="/login">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="gradient-custom" style="min-height: 100vh;">
+    <div class="container py-5 h-100">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="card text-center" style="border-radius: 15px; width: 40rem;">
+                <div class="card-header">
+                    <h3>{{new_worker.user_name}}</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Proffesional Details </h5>
+                    <p class="card-text">
+                        <strong>Address: </strong>{{new_worker.address}} <br>
+                        <strong>Pin code: </strong>{{new_worker.pin_code}} <br>
+                        <strong>Average rating: </strong>{{new_worker.mean_rating}} <br>
+                        <strong>Rating count: </strong>{{new_worker.rating_count}}  <br>
+                        <strong>Experience: </strong>{{new_worker.worker_experience}} years <br>
+                        <strong>service name: </strong>{{new_worker.service.service_name}} <br>
+                    </p>
+                    
+                </div>
+                <div class="card-footer">
+                    <h5>Customer Reviews</h5>
+                    {% if reviews %}
+                        <ul class="list-group">
+                            {% for review in reviews%}
+                            <li class="list-group-item">
+                                <strong>Rating:</strong> {{review.rating_by_customer}} <br>
+                                <strong>Review:</strong> {{review.review_by_customer}} <br>
+                                <strong>By:</strong>{{review.customer.user_name}} <br>
+
+                            </li>
+                            {%endfor%}
+
+                        </ul>
+                    {%else%}
+                        <p>No reviews for this proffesional</p>
+                    {%endif%}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+crossorigin="anonymous"></script>
+{%endblock%}
